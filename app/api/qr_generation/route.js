@@ -14,7 +14,7 @@ export async function POST(request) {
     const hash = crypto.createHash('sha256').update(dataString).digest('hex');
 
     // Create tracking URL
-    const url = `http://localhost:3000/products/${ipfsHash}`;
+    const url = `https://vercel.com/products/${ipfsHash}`;
 
     // Generate QR code
     const qrCode = await QRCode.toDataURL(url);
