@@ -31,10 +31,11 @@ export default function ProductPage() {
 
         // Step 2: Fetch from Pinta/IPFS if verified
         if (exists) {
-          const ipfsRes = await fetch(`https://gateway.pinata.cloud/ipfs/${hash}`);
-          if (!ipfsRes.ok) throw new Error('Failed to fetch data from IPFS');
-          const data = await ipfsRes.json();
-          setIpfsData(data);
+          const ipfsResponse = await fetch(`/api/ipfs-url/${hash}`);
+          const result = await ipfsResponse.json()
+          if (!result.success) throw new Error('Failed to fetch data from IPFS');
+          const dataRes = await fetch(result.url);
+          // setIpfsData(data);
         }
       } catch (err) {
         setError(err.message);
