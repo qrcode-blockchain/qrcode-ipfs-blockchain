@@ -35,7 +35,7 @@ export default function ProductPage() {
           const result = await ipfsResponse.json()
           if (!result.success) throw new Error('Failed to fetch data from IPFS');
           const dataRes = await fetch(result.url);
-          // setIpfsData(data);
+          setIpfsData(dataRes);
         }
       } catch (err) {
         setError(err.message);
