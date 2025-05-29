@@ -23,7 +23,7 @@ async function generateSignedUrl(key) {
     return signedUrl;
 }
 
-export async function GET({ params }) {
+export async function GET(request, { params }) {
     const {hashId} = await params;
     try{
         if (!process.env.BUCKET_NAME) {
